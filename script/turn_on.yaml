@@ -1,4 +1,4 @@
-#scripts.yaml
+#turn_on.yaml
 zrc90_a_button_1:
   alias: "ZRC-90 control btn 1"
   sequence:
