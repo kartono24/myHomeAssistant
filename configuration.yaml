@@ -1,0 +1,192 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 
+  longitude: 
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Australia/Melbourne
+  
+  customize:
+    - entity_id: device_tracker.thaos3rdiphone6
+      friendly_name: Thao
+    
+    - entity_id: device_tracker.eddiesiphone
+      friendly_name: Edward 
+    
+    - entity_id: sensor.fibaro_system_fgs213_switch_energy_3_0
+      friendly_name: Bedroom light energy
+    - entity_id: sensor.fibaro_system_fgs213_switch_power_3_8
+      friendly_name: Bedroom light power    
+    - entity_id: switch.fibaro_system_fgs213_switch_switch_3_0
+      friendly_name: Bedroom light switch
+      icon: mdi:lightbulb-on-outline
+    
+    - entity_id: sensor.fibaro_system_fgs223_double_relay_energy_5_0
+      friendly_name: Kitchen light energy
+    - entity_id: sensor.fibaro_system_fgs223_double_relay_power_5_8
+      friendly_name: Kitchen light power
+    - entity_id: switch.fibaro_system_fgs223_double_relay_switch_5_0
+      friendly_name: kitchen light switch
+      icon: mdi:lightbulb-on-outline
+    
+    - entity_id: sensor.fibaro_system_fgs223_double_relay_energy_5_0_2
+      friendly_name: Lounge light energy
+    - entity_id: sensor.fibaro_system_fgs223_double_relay_power_5_8_2
+      friendly_name: Lounge light power
+    - entity_id: switch.fibaro_system_fgs223_double_relay_switch_5_0_2
+      friendly_name: Lounge light switch
+      icon: mdi:lightbulb-on-outline
+    
+    - entity_id: sensor.aeotec_zw096_smart_switch_6_current_2_20
+      friendly_name: Switch6 current
+    - entity_id: sensor.aeotec_zw096_smart_switch_6_energy_2_0
+      friendly_name: Switch6 energy
+    - entity_id: sensor.aeotec_zw096_smart_switch_6_power_2_8
+      friendly_name: Switch6 power
+    - entity_id: sensor.aeotec_zw096_smart_switch_6_voltage_2_16
+      friendly_name: Switch6 voltage
+    - entity_id: switch.aeotec_zw096_smart_switch_6_switch_2_0
+      friendly_name: Switch6 switch
+    
+    - entity_id: sensor.yr_symbol
+      friendly_name: Weather
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+http:
+  # Uncomment this to add a password (recommended!)
+  api_password: 
+  # Uncomment this if you are using SSL or running in Docker etc
+  base_url: 
+
+# Checks for available updates
+updater:
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+# Track the sun
+sun:
+
+# Weather Prediction
+sensor:
+  platform: yr
+
+# Text to speech
+tts:
+  platform: google
+
+
+mqtt:
+  broker: 127.0.0.1
+  port: 1883
+  client_id: home-assistant-1
+  username: 
+  password: 
+
+zwave:
+  usb_path: /dev/ttyACM0
+  config_path: /srv/homeassistant/src/open-zwave-control-panel/config
+  polling_interval: 3000
+  customize:
+    sensor.aeotec_zw096_smart_switch_6_voltage_2_16:
+        polling_intensity: 1
+  
+device_tracker:
+  - platform: netgear
+    host: 
+    port: 
+    username: 
+    password: 
+
+script: !include script/turn_on.yaml
+
+group:
+###views
+ default_view:
+   name: Home
+   view: yes
+   entities:
+    - group.bedroomlight
+    - group.kitchen
+    - group.lounge
+    - group.switch6
+    - device_tracker.thaos3rdiphone6
+    - device_tracker.eddiesiphone
+    - sensor.yr_symbol
+    - sun.sun
+    
+ Scripts:
+   name: Scripts  
+   view: yes
+   entities:
+    - script.zrc90_a_button_1
+    - script.zrc90_a_button_2
+    - script.zrc90_a_button_3
+    - script.zrc90_a_button_4
+    - script.zrc90_a_button_5
+    - script.zrc90_a_button_6
+    - script.zrc90_a_button_7
+    - script.zrc90_a_button_8
+
+###Groups 
+ Bedroomlight:
+  name: Bedroom light
+  entities:
+    - sensor.fibaro_system_fgs213_switch_energy_3_0
+    - sensor.fibaro_system_fgs213_switch_power_3_8
+    - switch.fibaro_system_fgs213_switch_switch_3_0
+
+ kitchen:
+  name: Kitchen light
+  entities:
+    - sensor.fibaro_system_fgs223_double_relay_energy_5_0
+    - sensor.fibaro_system_fgs223_double_relay_power_5_8
+    - switch.fibaro_system_fgs223_double_relay_switch_5_0
+
+ lounge:
+  name: Lounge light
+  entities:
+    - sensor.fibaro_system_fgs223_double_relay_energy_5_0_2
+    - sensor.fibaro_system_fgs223_double_relay_power_5_8_2
+    - switch.fibaro_system_fgs223_double_relay_switch_5_0_2
+    
+ switch6:
+  name: Switch6
+  entities:
+    - sensor.aeotec_zw096_smart_switch_6_current_2_20
+    - sensor.aeotec_zw096_smart_switch_6_energy_2_0
+    - sensor.aeotec_zw096_smart_switch_6_power_2_8
+    - sensor.aeotec_zw096_smart_switch_6_voltage_2_16
+    - switch.aeotec_zw096_smart_switch_6_switch_2_0
+  
+  
+    
+    
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+#scripts.yaml
+zrc90_a_button_1:
+  alias: "ZRC-90 control btn 1"
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.fibaro_system_fgs213_switch_switch_3_0
+          
+
+zrc90_a_button_2:
+  alias: "ZRC-90 control btn 2"
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.fibaro_system_fgs223_double_relay_switch_5_0
+
+zrc90_a_button_3:
+  alias: "ZRC-90 control btn 3"
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.fibaro_system_fgs223_double_relay_switch_5_0_2
+
+zrc90_a_button_4:
+  alias: "ZRC-90 control btn 4"
+  sequence:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.fibaro_system_fgs213_switch_switch_3_0
+
+    - service: switch.turn_on
+      data:
+        entity_id: switch.fibaro_system_fgs223_double_relay_switch_5_0
+        
+    - service: switch.turn_on
+      data:
+        entity_id: switch.fibaro_system_fgs223_double_relay_switch_5_0_2 
+        
+        
+    
+zrc90_a_button_5:
+  alias: "ZRC-90 control btn 5"
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.fibaro_system_fgs213_switch_switch_3_0
+   
+
+zrc90_a_button_6:
+  alias: "ZRC-90 control btn 6"
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.fibaro_system_fgs223_double_relay_switch_5_0
+       
+
+zrc90_a_button_7:
+  alias: "ZRC-90 control btn 7"
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.fibaro_system_fgs223_double_relay_switch_5_0_2
+
+
+
+zrc90_a_button_8:
+  alias: "ZRC-90 control btn 8"
+  sequence:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.fibaro_system_fgs213_switch_switch_3_0
+
+    - service: switch.turn_off
+      data:
+        entity_id: switch.fibaro_system_fgs223_double_relay_switch_5_0
+        
+    - service: switch.turn_off
+      data:
+        entity_id: switch.fibaro_system_fgs223_double_relay_switch_5_0_2
